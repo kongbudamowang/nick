@@ -3,92 +3,73 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>红哥的工具合集</title>
+    <title>2025 红哥的工具合集</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
-            padding: 20px;
-            background: #f5f7fa;
+            padding: 2rem;
             color: #333;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: auto;
         }
 
         h1 {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
+            color: #d62828;
+        }
+
+        h2 {
+            color: #2a9d8f;
+            margin-top: 2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.3rem;
         }
 
         .tool-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .tool-item {
-            display: block;
-            padding: 14px 16px;
-            border-radius: 10px;
-            background: white;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
             text-decoration: none;
             color: #333;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            transition: background 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
             .tool-item:hover {
-                background: #e8f0ff;
+                transform: translateY(-3px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                color: #d62828;
             }
-
-        footer {
-            text-align: center;
-            font-size: 0.9rem;
-            margin-top: 40px;
-            color: #888;
-        }
-
-        @media (max-width: 500px) {
-            h1 {
-                font-size: 1.4rem;
-            }
-
-            .tool-item {
-                font-size: 1rem;
-                padding: 12px 14px;
-            }
-        }
     </style>
 </head>
 <body>
+    <h1>2025 红哥的工具合集</h1>
 
-    <div class="container">
-        <h1>🛠 红哥的工具合集</h1>
-
-        <div class="tool-list">
-            <a class="tool-item" href="word_counter.html">🔢 字数统计器</a>
-            <a class="tool-item" href="text_case.html">🔁 大小写转换器</a>
-            <a class="tool-item" href="chinese_segment.html">✂️ 中文词组逗号分隔器</a>
-            <a class="tool-item" href="https://www.remove.bg/zh" target="_blank">🖼️ 在线抠图工具（remove.bg）</a>
-            <a class="tool-item" href="https://libretv.liumingye.cn/" target="_blank">📺 免费追剧（LibreTV）</a>
-            <a class="tool-item" href="https://taiwanebook.ncl.edu.tw/zh-tw" target="_blank">📚 台湾电子书（台湾图书馆）</a>
-        </div>
-
-        <p style="text-align: center; font-size: 0.9rem; color: #888; margin-top: 20px;">
-            包含自制工具与精选免费资源推荐
-        </p>
-
-        <footer>© 2025 红哥</footer>
+    <h2>🔧 自制小工具</h2>
+    <div class="tool-list">
+        <a class="tool-item" href="word_counter.html">🔢 字数统计器</a>
+        <a class="tool-item" href="text_case.html">🔁 大小写转换器</a>
+        <a class="tool-item" href="chinese_segment.html">✂️ 中文词组逗号分隔器</a>
     </div>
 
+    <h2>🌐 外部推荐工具</h2>
+    <div class="tool-list">
+        <a class="tool-item" href="https://www.remove.bg/zh" target="_blank">🖼️ 在线抠图工具（remove.bg，需VPN）</a>
+        <a class="tool-item" href="https://libretv.liumingye.cn/" target="_blank">📺 免费追剧（LibreTV）</a>
+        <a class="tool-item" href="https://taiwanebook.ncl.edu.tw/zh-tw" target="_blank">📚 台湾电子书（国家图书馆，需VPN）</a>
+        <a class="tool-item" href="https://69shuba.cx/index.html" target="_blank">📖 免费小说阅读（69书吧）</a>
+        <a class="tool-item" href="https://www.mixamo.com/#/" target="_blank">🕺 3D 动作人物生成（Mixamo，需VPN）</a>
+        <a class="tool-item" href="https://pixabay.com/" target="_blank">🖼️ 免费图视频音乐素材（Pixabay）</a>
+
+    </div>
 </body>
 </html>
