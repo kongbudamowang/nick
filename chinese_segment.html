@@ -1,102 +1,80 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>中文智能分词加逗号</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f0f4ff;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    textarea {
-      width: 100%;
-      height: 120px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      resize: vertical;
-    }
-    button {
-      margin: 20px 0;
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #3a86ff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    #output {
-      white-space: pre-wrap;
-      font-size: 16px;
-      background: #fff;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中文词组逗号分隔</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f0f4ff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin: 20px 0;
+            padding: 12px;
+            font-size: 1rem;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #output {
+            white-space: pre-wrap;
+            font-size: 1rem;
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            textarea {
+                height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <h1>📌 中文词组智能逗号分隔</h1>
-  <textarea id="input" placeholder="请输入中文词组，例如：土豆面条火腿肠"></textarea>
-  <br>
-  <button onclick="segmentText()">加逗号</button>
-
-  <h3>结果：</h3>
-  <div id="output"></div>
-
-  <script>
-    // 引入 TinySegmenter 中文分词器
-    class TinySegmenter {
-      constructor() {
-        this.BIAS = -332;
-        this.UP1 = { "は": 353, "で": 345, "を": 340 };
-        this.BP1 = { "に": 345, "と": 341 };
-        this.W1 = { "の": 276, "に": 276, "を": 275 };
-        this.W2 = { "する": 367, "ある": 367, "いる": 367 };
-      }
-
-      segment(input) {
-        const result = [];
-        let word = "";
-        for (let i = 0; i < input.length; i++) {
-          word += input[i];
-          if (this.isWordEnd(word)) {
-            result.push(word);
-            word = "";
-          }
+    <h1>✂️ 中文词组逗号分隔</h1>
+    <textarea id="input" placeholder="请输入中文词组..."></textarea>
+    <button onclick="segmentText()">添加逗号</button>
+    <div id="output"></div>
+    <script>
+        function segmentText() {
+            const text = document.getElementById('input').value.trim();
+            const result = text.split('').join('，');
+            document.getElementById('output').textContent = result;
         }
-        if (word) result.push(word);
-        return result;
-      }
-
-      isWordEnd(word) {
-        // 简化判断逻辑：两个字及以上就分词
-        return word.length >= 2;
-      }
-    }
-
-    const segmenter = new TinySegmenter();
-
-    function segmentText() {
-      const input = document.getElementById("input").value.trim();
-      if (!input) {
-        document.getElementById("output").textContent = "请输入内容。";
-        return;
-      }
-
-      const words = segmenter.segment(input);
-      const result = words.join("，");
-      document.getElementById("output").textContent = result;
-    }
-  </script>
+    </script>
 </body>
 </html>

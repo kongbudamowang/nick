@@ -1,80 +1,84 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>🔡 大小写转换器</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f2f5ff;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    textarea {
-      width: 100%;
-      height: 150px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      resize: vertical;
-    }
-    .buttons {
-      margin: 20px 0;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    button {
-      flex: 1;
-      padding: 10px;
-      font-size: 16px;
-      background: #4f7fff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #365dff;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大小写转换器</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f0f4ff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 1rem;
+            background: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #output {
+            white-space: pre-wrap;
+            font-size: 1rem;
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            textarea {
+                height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>🔡 大小写转换器</h1>
-  <textarea id="textInput" placeholder="在这里输入文本..."></textarea>
-
-  <div class="buttons">
-    <button onclick="toUpperCase()">全大写</button>
-    <button onclick="toLowerCase()">全小写</button>
-    <button onclick="toTitleCase()">首字母大写</button>
-  </div>
-
-  <script>
-    function toUpperCase() {
-      const input = document.getElementById('textInput');
-      input.value = input.value.toUpperCase();
-    }
-
-    function toLowerCase() {
-      const input = document.getElementById('textInput');
-      input.value = input.value.toLowerCase();
-    }
-
-    function toTitleCase() {
-      const input = document.getElementById('textInput');
-      input.value = input.value
-        .toLowerCase()
-        .split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-    }
-  </script>
+    <h1>🔁 大小写转换器</h1>
+    <textarea id="input" placeholder="请输入文本..."></textarea>
+    <button onclick="toUpperCase()">转换为大写</button>
+    <button onclick="toLowerCase()">转换为小写</button>
+    <div id="output"></div>
+    <script>
+        function toUpperCase() {
+            const text = document.getElementById('input').value;
+            document.getElementById('output').textContent = text.toUpperCase();
+        }
+        function toLowerCase() {
+            const text = document.getElementById('input').value;
+            document.getElementById('output').textContent = text.toLowerCase();
+        }
+    </script>
 </body>
 </html>
