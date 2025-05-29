@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拼音转换器 - 红哥工具</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    textarea, pre {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #357ac8;
+    }
+
+    pre {
+      background-color: #fff;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+      button {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔤 拼音转换器</h1>
+    <textarea id="input" placeholder="请输入中文..."></textarea>
+    <button onclick="convertToPinyin()">转换为拼音</button>
+    <pre id="output" placeholder="拼音输出..."></pre>
+  </div>
+
+  <!-- 引入拼音库 -->
+  <script src="https://cdn.jsdelivr.net/npm/pinyin/lib/web-pinyin.js"></script>
+  <script>
+    function convertToPinyin() {
+      const input = document.getElementById('input').value.trim();
+      if (!input) {
+        document.getElementById('output').textContent = '';
+        return;
+      }
+
+      const pinyinResult = window.pinyin(input, {
+        style: window.pinyin.STYLE_NORMAL, // 不带声调
+        heteronym: false
+      });
+
+      const flatResult = pinyinResult.map(item => item[0]).join(' ');
+      document.getElementById('output').textContent = flatResult;
+    }
+  </script>
+</body>
+</html>
