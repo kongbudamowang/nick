@@ -1,135 +1,555 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025 红哥的工具合集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
+        * {
             margin: 0;
-            padding: 2rem;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
+
+        :root {
+            --primary: #d62828;
+            --secondary: #2a9d8f;
+            --accent: #3a7d44;
+            --light: #f9f9f9;
+            --dark: #333;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08) 0 4px 12px;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, var(--primary), #e63946);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(214, 40, 40, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+                opacity: 0.3;
+            }
 
         h1 {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #d62828;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 分类样式 */
+        .category {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+            .category:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+            }
 
         h2 {
-            color: #2a9d8f;
-            margin-top: 2rem;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 0.3rem;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
         }
+
+            h2 i {
+                margin-right: 12px;
+                background: linear-gradient(to right, var(--secondary), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
         h3 {
-            color: #3a7d44;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
         }
 
+            h3 i {
+                margin-right: 10px;
+                width: 30px;
+                text-align: center;
+                color: var(--primary);
+            }
+
+        /* 工具列表样式 */
         .tool-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 0.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .tool-item {
-            background-color: white;
-            padding: 1rem;
+            background: var(--card-bg);
             border-radius: 12px;
-            text-align: center;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
             text-decoration: none;
-            color: #333;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            color: var(--dark);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
         }
 
-            .tool-item:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                color: #d62828;
+            .tool-item::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 4px;
+                background: var(--primary);
+                transform: scaleY(0);
+                transform-origin: top;
+                transition: transform 0.3s ease;
             }
+
+            .tool-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                border-color: rgba(214, 40, 40, 0.2);
+            }
+
+                .tool-item:hover::before {
+                    transform: scaleY(1);
+                }
+
+        .tool-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.1), rgba(42, 157, 143, 0.1));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .tool-content {
+            flex: 1;
+        }
+
+        .tool-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .tool-item:hover .tool-title {
+            color: var(--primary);
+        }
+
+        .tool-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .external-icon {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.95rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .tool-list {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>2025 红哥的工具合集</h1>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-toolbox"></i> 2025 红哥的工具合集</h1>
+            <p class="subtitle">精选实用工具与资源，提高工作效率与创作灵感</p>
+        </div>
+    </header>
 
-    <h2>🔧 自制小工具</h2>
-    <div class="tool-list">
-        <a class="tool-item" href="word_counter.html">🔢 字数统计器</a>
-        <a class="tool-item" href="text_case.html">🔁 大小写转换器</a>
-        <a class="tool-item" href="chinese_segment.html">✂️ 中文词组逗号分隔器</a>
+    <div class="container">
+        <!-- 自制小工具 -->
+        <section class="category">
+            <h2><i class="fas fa-hammer"></i> 🔧 自制小工具</h2>
+            <div class="tool-list">
+                <a class="tool-item" href="word_counter.html">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-title">🔢 字数统计器</div>
+                        <div class="tool-desc">快速统计文本字数、字符数和段落数</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="text_case.html">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-title">🔁 大小写转换器</div>
+                        <div class="tool-desc">快速转换英文字母的大小写格式</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="chinese_segment.html">
+                    <div class="tool-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-title">✂️ 中文词组逗号分隔器</div>
+                        <div class="tool-desc">将连续中文文本自动分割为逗号分隔的词组</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 在线工具 -->
+        <section class="category">
+            <h2><i class="fas fa-globe"></i> 🧰 在线工具</h2>
+            <div class="tool-list">
+                <a class="tool-item" href="https://www.remove.bg/zh" target="_blank">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-title">🖼️ 在线抠图工具（remove.bg）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">一键去除图片背景，无需PS技能</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.diyiziti.com/" target="_blank">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-title">✍️ 在线字体转换器（第一字体网）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">多种艺术字体在线转换与下载</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://818ps.com/home" target="_blank">
+                    <div class="tool-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-title">🎨 在线图片编辑器（图怪兽）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">简单易用的在线设计工具，海量模板</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 资源 -->
+        <section class="category">
+            <h2><i class="fas fa-folder-open"></i> 📁 资源</h2>
+
+            <h3><i class="fas fa-image"></i> 🖼️ 图片资源</h3>
+            <div class="tool-list">
+                <a class="tool-item" href="https://pixabay.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费图视频音乐素材（Pixabay）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">超过2百万张免费高质量图片和视频素材</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://picjumbo.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费高质量图片下载（Picjumbo）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">每日更新免费高分辨率图片资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.fontspace.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费英文字体下载（FontSpace）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">超过90,000款免费英文字体下载</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.diyiziti.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">第一字体网（字体转换）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">中文艺术字体在线生成与转换</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://818ps.com/home" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">图怪兽（在线图片编辑器）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">简单易用的在线设计平台</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.zcool.com.cn/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">设计师互动平台（站酷 ZCOOL）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">中国领先的设计师互动平台</div>
+                    </div>
+                </a>
+            </div>
+
+            <h3><i class="fas fa-video"></i> 🎞️ 视频资源</h3>
+            <div class="tool-list">
+                <a class="tool-item" href="https://www.gfxcamp.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">视频后期模板与插件资源（GFXCamp）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">专业的视频模板、插件和教程资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.lookae.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">影视后期资源分享平台（LookAE）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">AE模板、PR插件等影视后期资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://libretv.liumingye.cn/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费追剧（LibreTV）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">高清影视资源免费观看</div>
+                    </div>
+                </a>
+            </div>
+
+            <h3><i class="fas fa-cube"></i> 🧱 3D资源</h3>
+            <div class="tool-list">
+                <a class="tool-item" href="https://www.cgmodel.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">3D模型下载与交易平台（CG模型网）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">专业3D模型资源下载平台</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.3d66.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">设计素材与云服务平台（3D溜溜网）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">3D模型、贴图、教程等资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.aigei.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">数字娱乐素材平台（爱给网）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">游戏、影视、设计等数字素材</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.turbosquid.com/zh_cn" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">全球3D模型资源平台（TurboSquid）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">全球最大的3D模型交易平台之一</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://kenney.nl/assets" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费游戏素材库（Kenney）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">超过60,000个免费游戏素材资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.mixamo.com/#/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">3D动画人物生成平台（Mixamo）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">Adobe旗下的免费3D角色动画平台</div>
+                    </div>
+                </a>
+            </div>
+
+            <h3><i class="fas fa-music"></i> 🔊 音效资源</h3>
+            <div class="tool-list">
+                <a class="tool-item" href="https://www.aigei.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">数字娱乐素材平台（爱给网）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">音效、配乐、游戏音效等资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://pixabay.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">Pixabay（免费图视频音乐素材）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">免费音乐音效素材库</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 学习 -->
+        <section class="category">
+            <h2><i class="fas fa-graduation-cap"></i> 📚 学习</h2>
+            <div class="tool-list">
+                <a class="tool-item" href="http://read.nlc.cn/user/index#" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">国家图书馆电子书<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">丰富的电子书资源免费阅读</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://taiwanebook.ncl.edu.tw/zh-tw" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">台湾电子书（国家图书馆）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">台湾地区电子书资源平台</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="http://202.106.125.35/kns55/brief/result.aspx?dbPrefix=CJFQ" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">中文学术期刊文献（CNKI）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">中国知网学术资源平台</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.icourse163.org/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">网易公开课<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">国内外名校公开课免费学习</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 文章 -->
+        <section class="category">
+            <h2><i class="fas fa-book-open"></i> 📰 文章</h2>
+            <div class="tool-list">
+                <a class="tool-item" href="https://www.mtyyw.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">麦田音乐网（音乐文章欣赏）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">音乐赏析、音乐人故事与音乐文化</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://adzhp.cc/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">爱达杂货铺（工具与资源站导航）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">精选实用工具与资源导航</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 娱乐 -->
+        <section class="category">
+            <h2><i class="fas fa-gamepad"></i> 🎉 娱乐</h2>
+            <div class="tool-list">
+                <a class="tool-item" href="https://www.xxx5217.com/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">小说影视资源（xxx5217）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">小说与影视资源聚合平台</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://www.rrdynb.com/index.html" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">热热电影网（影视剧资源）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">最新热门影视剧资源</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://69shuba.cx/index.html" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费小说阅读（69书吧）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">海量小说免费在线阅读</div>
+                    </div>
+                </a>
+
+                <a class="tool-item" href="https://libretv.liumingye.cn/" target="_blank">
+                    <div class="tool-content">
+                        <div class="tool-title">免费追剧（LibreTV）<i class="fas fa-external-link-alt external-icon"></i></div>
+                        <div class="tool-desc">高清影视资源免费观看</div>
+                    </div>
+                </a>
+            </div>
+        </section>
     </div>
 
-    <h2>🧰 在线工具</h2>
-    <div class="tool-list">
-        <a class="tool-item" href="https://www.remove.bg/zh" target="_blank">🖼️ 在线抠图工具（remove.bg）</a>
-        <a class="tool-item" href="https://www.diyiziti.com/" target="_blank">✍️ 在线字体转换器（第一字体网）</a>
-        <a class="tool-item" href="https://818ps.com/home" target="_blank">🎨 在线图片编辑器（图怪兽）</a>
-    </div>
-
-    <h2>📁 资源</h2>
-
-    <h3>🖼️ 图片资源</h3>
-    <div class="tool-list">
-        <a class="tool-item" href="https://pixabay.com/" target="_blank">免费图视频音乐素材（Pixabay）</a>
-        <a class="tool-item" href="https://picjumbo.com/" target="_blank">免费高质量图片下载（Picjumbo）</a>
-        <a class="tool-item" href="https://www.fontspace.com/" target="_blank">免费英文字体下载（FontSpace）</a>
-        <a class="tool-item" href="https://www.diyiziti.com/" target="_blank">第一字体网（字体转换）</a>
-        <a class="tool-item" href="https://818ps.com/home" target="_blank">图怪兽（在线图片编辑器）</a>
-        <a class="tool-item" href="https://www.zcool.com.cn/" target="_blank">设计师互动平台（站酷 ZCOOL）</a>
-    </div>
-
-    <h3>🎞️ 视频资源</h3>
-    <div class="tool-list">
-        <a class="tool-item" href="https://www.gfxcamp.com/" target="_blank">视频后期模板与插件资源（GFXCamp）</a>
-        <a class="tool-item" href="https://www.lookae.com/" target="_blank">影视后期资源分享平台（LookAE）</a>
-        <a class="tool-item" href="https://libretv.liumingye.cn/" target="_blank">免费追剧（LibreTV）</a>
-    </div>
-
-    <h3>🧱 3D资源</h3>
-    <div class="tool-list">
-        <a class="tool-item" href="https://www.cgmodel.com/" target="_blank">3D模型下载与交易平台（CG模型网）</a>
-        <a class="tool-item" href="https://www.3d66.com/" target="_blank">设计素材与云服务平台（3D溜溜网）</a>
-        <a class="tool-item" href="https://www.aigei.com/" target="_blank">数字娱乐素材平台（爱给网）</a>
-        <a class="tool-item" href="https://www.turbosquid.com/zh_cn" target="_blank">全球3D模型资源平台（TurboSquid）</a>
-        <a class="tool-item" href="https://kenney.nl/assets" target="_blank">免费游戏素材库（Kenney）</a>
-        <a class="tool-item" href="https://www.mixamo.com/#/" target="_blank">3D动画人物生成平台（Mixamo）</a>
-    </div>
-
-    <h3>🔊 音效资源</h3>
-    <div class="tool-list">
-        <a class="tool-item" href="https://www.aigei.com/" target="_blank">数字娱乐素材平台（爱给网）</a>
-        <a class="tool-item" href="https://pixabay.com/" target="_blank">Pixabay（免费图视频音乐素材）</a>
-    </div>
-
-    <h2>📚 学习</h2>
-    <div class="tool-list">
-        <a class="tool-item" href="http://read.nlc.cn/user/index#" target="_blank">国家图书馆电子书</a>
-        <a class="tool-item" href="https://taiwanebook.ncl.edu.tw/zh-tw" target="_blank">台湾电子书（国家图书馆）</a>
-        <a class="tool-item" href="http://202.106.125.35/kns55/brief/result.aspx?dbPrefix=CJFQ" target="_blank">中文学术期刊文献（CNKI）</a>
-        <a class="tool-item" href="https://www.icourse163.org/" target="_blank">网易公开课</a>
-    </div>
-
-    <h2>📰 文章</h2>
-    <div class="tool-list">
-        <a class="tool-item" href="https://www.mtyyw.com/" target="_blank">麦田音乐网（音乐文章欣赏）</a>
-        <a class="tool-item" href="https://adzhp.cc/" target="_blank">爱达杂货铺（工具与资源站导航）</a>
-    </div>
-
-    <h2>🎉 娱乐</h2>
-    <div class="tool-list">
-        <a class="tool-item" href="https://www.xxx5217.com/" target="_blank">小说影视资源（xxx5217）</a>
-        <a class="tool-item" href="https://www.rrdynb.com/index.html" target="_blank">热热电影网（影视剧资源）</a>
-        <a class="tool-item" href="https://69shuba.cx/index.html" target="_blank">免费小说阅读（69书吧）</a>
-        <a class="tool-item" href="https://libretv.liumingye.cn/" target="_blank">免费追剧（LibreTV）</a>
-    </div>
+    <footer>
+        <div class="container">
+            <p>© 2025 红哥的工具合集 | 精选实用工具与资源导航</p>
+            <p>本网站仅作为学习交流使用</p>
+        </div>
+    </footer>
 </body>
 </html>
