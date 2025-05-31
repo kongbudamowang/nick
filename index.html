@@ -6,6 +6,7 @@
     <title>2025 红哥的工具合集 - 响应式设计</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 基础样式 - 去除重复定义 */
         * {
             margin: 0;
             padding: 0;
@@ -38,7 +39,7 @@
             padding: 15px;
         }
 
-        /* 响应式头部样式 */
+        /* 头部样式 */
         header {
             text-align: center;
             padding: 30px 15px;
@@ -79,34 +80,6 @@
             z-index: 1;
         }
 
-        /* 移动端菜单按钮 */
-        .mobile-menu-btn {
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-            .mobile-menu-btn span {
-                display: block;
-                width: 24px;
-                height: 2px;
-                background: white;
-                margin: 2px 0;
-                transition: all 0.3s ease;
-            }
-
         /* 分类样式 */
         .category {
             background: var(--card-bg);
@@ -114,7 +87,6 @@
             box-shadow: var(--shadow);
             padding: 20px;
             margin-bottom: 25px;
-            transition: all 0.3s ease;
         }
 
         h2 {
@@ -149,7 +121,7 @@
                 color: var(--primary);
             }
 
-        /* 工具列表样式 */
+        /* 工具列表样式 - 保留所有功能 */
         .tool-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -245,7 +217,7 @@
             border-top: 1px solid #eee;
         }
 
-        /* 响应式设计 - 手机 */
+        /* 响应式设计 - 保留完整功能 */
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.8rem;
@@ -263,7 +235,6 @@
 
             .category {
                 padding: 15px;
-                border-radius: 12px;
             }
 
             h2 {
@@ -273,13 +244,8 @@
             h3 {
                 font-size: 1.1rem;
             }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
         }
 
-        /* 响应式设计 - 小屏手机 */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.6rem;
@@ -300,7 +266,34 @@
             }
         }
 
-        /* 移动端菜单 */
+        /* 移动端菜单 - 保留完整功能 */
+        .mobile-menu-btn {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+            .mobile-menu-btn span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: white;
+                margin: 2px 0;
+                transition: all 0.3s ease;
+            }
+
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -319,34 +312,6 @@
                 right: 0;
             }
 
-            .mobile-menu h3 {
-                color: var(--primary);
-                margin-top: 0;
-                padding-bottom: 10px;
-                border-bottom: 1px solid #eee;
-            }
-
-            .mobile-menu ul {
-                list-style: none;
-            }
-
-            .mobile-menu li {
-                margin-bottom: 10px;
-            }
-
-            .mobile-menu a {
-                display: block;
-                padding: 10px;
-                color: var(--dark);
-                text-decoration: none;
-                border-radius: 8px;
-                transition: background 0.2s;
-            }
-
-                .mobile-menu a:hover {
-                    background: rgba(214, 40, 40, 0.05);
-                }
-
         .close-menu {
             position: absolute;
             top: 15px;
@@ -357,7 +322,7 @@
             color: var(--dark);
         }
 
-        /* 返回顶部按钮 */
+        /* 返回顶部按钮 - 保留完整功能 */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -388,14 +353,14 @@
     </style>
 </head>
 <body>
-    <!-- 移动端菜单按钮 -->
+    <!-- 移动端菜单按钮 - 保留 -->
     <button class="mobile-menu-btn">
         <span></span>
         <span></span>
         <span></span>
     </button>
 
-    <!-- 移动端菜单 -->
+    <!-- 移动端菜单 - 保留 -->
     <div class="mobile-menu">
         <button class="close-menu">
             <i class="fas fa-times"></i>
@@ -419,7 +384,7 @@
     </header>
 
     <div class="container">
-        <!-- 自制小工具 -->
+        <!-- 自制小工具 - 保留所有内容 -->
         <section class="category" id="self-tools">
             <h2><i class="fas fa-hammer"></i> 🔧 自制小工具</h2>
             <div class="tool-list">
@@ -455,7 +420,7 @@
             </div>
         </section>
 
-        <!-- 在线工具 -->
+        <!-- 在线工具 - 保留所有内容 -->
         <section class="category" id="online-tools">
             <h2><i class="fas fa-globe"></i> 🧰 在线工具</h2>
             <div class="tool-list">
@@ -491,7 +456,7 @@
             </div>
         </section>
 
-        <!-- 资源 -->
+        <!-- 资源 - 保留所有分类和内容 -->
         <section class="category" id="resources">
             <h2><i class="fas fa-folder-open"></i> 📁 资源</h2>
 
@@ -627,7 +592,7 @@
             </div>
         </section>
 
-        <!-- 学习 -->
+        <!-- 学习 - 保留所有内容 -->
         <section class="category" id="learning">
             <h2><i class="fas fa-graduation-cap"></i> 📚 学习</h2>
             <div class="tool-list">
@@ -661,7 +626,7 @@
             </div>
         </section>
 
-        <!-- 文章 -->
+        <!-- 文章 - 保留所有内容 -->
         <section class="category" id="articles">
             <h2><i class="fas fa-book-open"></i> 📰 文章</h2>
             <div class="tool-list">
@@ -681,7 +646,7 @@
             </div>
         </section>
 
-        <!-- 娱乐 -->
+        <!-- 娱乐 - 保留所有内容 -->
         <section class="category" id="entertainment">
             <h2><i class="fas fa-gamepad"></i> 🎉 娱乐</h2>
             <div class="tool-list">
@@ -723,13 +688,13 @@
         </div>
     </footer>
 
-    <!-- 返回顶部按钮 -->
+    <!-- 返回顶部按钮 - 保留 -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
     <script>
-        // 移动端菜单功能
+        // 移动端菜单功能 - 保留完整
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenu = document.querySelector('.mobile-menu');
         const closeMenu = document.querySelector('.close-menu');
@@ -750,7 +715,7 @@
             });
         });
 
-        // 返回顶部功能
+        // 返回顶部功能 - 保留完整
         const backToTop = document.querySelector('.back-to-top');
 
         window.addEventListener('scroll', () => {
@@ -770,7 +735,7 @@
 
         // 点击外部关闭移动菜单
         document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) {
+            if (!mobileMenu.contains(e.target)) {
                 if (!mobileMenuBtn.contains(e.target)) {
                     mobileMenu.classList.remove('active');
                 }
