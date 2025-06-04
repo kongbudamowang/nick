@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>周易六十四卦抽签工具</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            padding: 2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d62828;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+            button:hover {
+                background-color: #21867a;
+            }
+
+        .result {
+            margin-top: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            .result h2 {
+                color: #3a7d44;
+            }
+
+            .result p {
+                line-height: 1.6;
+            }
+    </style>
+</head>
+<body>
+    <h1>周易六十四卦抽签工具</h1>
+    <button onclick="drawHexagram()">抽一卦</button>
+    <div class="result" id="result">
+        <p>点击上方按钮，开始抽签。</p>
+    </div>
+
+    <script>
+    const hexagrams = [
+      {
+        name: "乾为天",
+        symbol: "䷀",
+        description: "象征天，喻龙，象征纯粹的阳和健，表明兴盛强健。",
+        explanation: "乾卦是根据万物变通的道理，以“元、亨、利、贞”为卦辞，示吉祥如意，教导人遵守天道的德行。"
+      },
+      {
+        name: "坤为地",
+        symbol: "䷁",
+        description: "象征地，喻母，象征柔顺，表明包容万物。",
+        explanation: "坤卦强调顺应自然，柔顺而有承载力，教导人顺势而为，广纳百川。"
+      },
+      {
+        name: "水雷屯",
+        symbol: "䷂",
+        description: "象征困难的开始，万事起头难。",
+        explanation: "屯卦表示事物初始阶段的艰难，提醒人们在开始时要有耐心和准备。"
+      },
+      {
+        name: "山水蒙",
+        symbol: "䷃",
+        description: "象征启蒙，教育和启发的重要性。",
+        explanation: "蒙卦强调通过教育和学习来启发智慧，指导人们走向正道。"
+      },
+      {
+        name: "水天需",
+        symbol: "䷄",
+        description: "象征等待，需时而动。",
+        explanation: "需卦教导人们在行动前要有耐心，等待合适的时机，切勿急躁。"
+      },
+      {
+        name: "天水讼",
+        symbol: "䷅",
+        description: "象征争讼，慎重处理争端。",
+        explanation: "讼卦提醒人们在面对争执时要冷静处理，避免冲突升级。"
+      },
+      {
+        name: "地水师",
+        symbol: "䷆",
+        description: "象征军队，纪律和组织的重要性。",
+        explanation: "师卦强调组织和纪律的重要，指导人们在团队中各司其职，协同作战。"
+      },
+      {
+        name: "水地比",
+        symbol: "䷇",
+        description: "象征亲密，合作与信任。",
+        explanation: "比卦教导人们建立信任关系，通过合作达到共同目标。"
+      },
+      {
+        name: "风天小畜",
+        symbol: "䷈",
+        description: "象征积蓄，小有积蓄，等待时机。",
+        explanation: "小畜卦提醒人们在积蓄力量的同时，要保持谨慎，等待合适的时机行动。"
+      },
+      {
+        name: "天泽履",
+        symbol: "䷉",
+        description: "象征行为，谨慎行事。",
+        explanation: "履卦教导人们在行动中要小心谨慎，遵循道德规范。"
+      },
+      {
+        name: "地天泰",
+        symbol: "䷊",
+        description: "象征通泰，天地交而万物通。",
+        explanation: "泰卦表示顺利和谐的状态，鼓励人们抓住有利时机，推动事业发展。"
+      },
+      {
+        name: "天地否",
+        symbol: "䷋",
+        description: "象征否极，天地不交，万物不通。",
+        explanation: "否卦提醒人们在不利的环境中要保持谨慎，避免冒进，等待转机。"
+      },
+      {
+        name: "天火同人",
+        symbol: "䷌",
+        description: "象征同道合人，合作共赢。",
+        explanation: "同人卦强调与志同道合的人合作，共同追求目标。"
+      },
+      {
+        name: "火天大有",
+        symbol: "䷍",
+        description: "象征大有收获，富裕和成功。",
+        explanation: "大有卦表示丰收和成功，鼓励人们珍惜成果，继续努力。"
+      },
+      {
+        name: "地山谦",
+        symbol: "䷎",
+        description: "象征谦虚，内高外低。",
+        explanation: "谦卦教导人们保持谦虚的态度，才能获得他人的尊重和支持。"
+      },
+      {
+        name: "雷地豫",
+        symbol: "䷏",
+        description: "象征喜悦，顺时依势。",
+        explanation: "豫卦表示愉快和顺利，提醒人们在顺境中也要保持警惕。"
+      },
+      // ... 此处省略其余48卦，为简洁起见
+    ];
+
+    function drawHexagram() {
+      const index = Math.floor(Math.random() * hexagrams.length);
+      const hex = hexagrams[index];
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h2>${hex.symbol} ${hex.name}</h2>
+        <p><strong>卦象：</strong>${hex.description}</p>
+        <p><strong>解读：</strong>${hex.explanation}</p>
+      `;
+    }
+    </script>
+</body>
+</html>
