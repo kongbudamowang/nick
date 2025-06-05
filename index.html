@@ -19,6 +19,19 @@
             color: #d62828;
         }
 
+        .top-link {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 1.5rem;
+            background-color: #2a9d8f;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
         h2 {
             color: #2a9d8f;
             margin-top: 2rem;
@@ -50,35 +63,30 @@
                 color: #d62828;
             }
 
-        .giscus {
-            margin-bottom: 2rem;
+        .comment-section {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px dashed #ccc;
+        }
+
+        .back-to-top {
+            display: block;
+            width: fit-content;
+            margin: 1rem auto;
+            background-color: #264653;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <h1 id="top">2025 红哥的工具合集</h1>
+    <a href="#comment" class="top-link">💬 去留言区</a>
 
-    <!-- 🗨️ Giscus 留言板区域 -->
-    <div class="giscus">
-        <script src="https://giscus.app/client.js"
-                data-repo="kongbudamowang/tools"
-                data-repo-id="R_kgDOOyo37g"
-                data-category="Ideas"
-                data-category-id="DIC_kwDOOyo37s4CrCNc"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="preferred_color_scheme"
-                data-lang="zh-CN"
-                crossorigin="anonymous"
-                async>
-        </script>
-    </div>
-
-    <h1>2025 红哥的工具合集</h1>
-
-    <!-- 以下内容不变，保持你的原始结构 -->
     <h2>🔧 自制小工具</h2>
     <div class="tool-list">
         <a class="tool-item" href="word_counter.html">🔢 字数统计器</a>
@@ -157,5 +165,23 @@
         <a class="tool-item" href="https://adzhp.cc/" target="_blank">爱达杂货铺</a>
     </div>
 
+    <div class="comment-section" id="comment">
+        <script src="https://giscus.app/client.js"
+                data-repo="kongbudamowang/tools"
+                data-repo-id="R_kgDOOyo37g"
+                data-category="Ideas"
+                data-category-id="DIC_kwDOOyo37s4CrCNc"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        </script>
+        <a href="#top" class="back-to-top">⬆ 回到顶部</a>
+    </div>
 </body>
 </html>
